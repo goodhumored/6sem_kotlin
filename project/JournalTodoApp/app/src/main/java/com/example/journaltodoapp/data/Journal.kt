@@ -2,6 +2,7 @@ package com.example.journaltodoapp.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "journal_table")
 data class Journal(
@@ -9,4 +10,4 @@ data class Journal(
     val title: String,
     val content: String,
     val timestamp: Long
-)
+): Serializable

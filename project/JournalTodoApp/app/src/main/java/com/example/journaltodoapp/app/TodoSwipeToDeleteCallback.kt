@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 class TodoSwipeToDeleteCallback(private val viewModel: TodoViewModel) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 
     override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-        // We don't need to handle item moves for swipe-to-delete
         return false
     }
 

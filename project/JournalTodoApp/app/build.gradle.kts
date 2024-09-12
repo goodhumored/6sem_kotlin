@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -52,6 +53,9 @@ android {
 
 dependencies {
     // Core dependencies
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.fragment)
+    kapt(libs.androidx.lifecycle.compiler)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -65,6 +69,10 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.8.0")
+    implementation(libs.androidx.navigation.ui.ktx)
 
     // Room (for database)
     val room_version = "2.6.1"

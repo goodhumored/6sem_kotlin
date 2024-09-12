@@ -9,11 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.journaltodoapp.R
 import com.example.journaltodoapp.data.Journal
 
-class JournalAdapter(private var journalList: List<Journal>?) : RecyclerView.Adapter<JournalAdapter.JournalViewHolder>() {
-
+class JournalAdapter(private var journalList: List<Journal>?, private val onItemClicked: (Journal) -> Unit) : RecyclerView.Adapter<JournalAdapter.JournalViewHolder>() {
     inner class JournalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.journalTitle)
         val contentTextView: TextView = itemView.findViewById(R.id.journalContent)
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val journal = journalList?.get(position)
+                    if (journal != null) {
+                        onItemClicked(journal)
+                    }
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JournalViewHolder {
@@ -22,8 +32,7 @@ class JournalAdapter(private var journalList: List<Journal>?) : RecyclerView.Ada
     }
 
     override fun getItemCount(): Int {
-        val count = journalList?.count() ?: 0;
-        Log.d("jour adap", "returning count $count")
+        val count = journalList?.count() ?: 0
      return count;
     }
 

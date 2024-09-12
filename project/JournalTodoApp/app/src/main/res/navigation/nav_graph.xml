@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/journalFragment">
+    <fragment
+        android:id="@+id/journalFragment"
+        android:name="com.example.journaltodoapp.app.JournalFragment"
+        android:label="Journal Fragment">
+        <action
+            android:id="@+id/action_journalFragment_to_journalPageFragment"
+            app:destination="@id/journalPageFragment">
+            <argument
+                android:name="journal"
+                app:argType="com.example.journaltodoapp.data.Journal"
+                app:nullable="false" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/journalPageFragment"
+        android:name="com.example.journaltodoapp.app.JournalPageFragment"
+        android:label="Journal Detail Fragment">
+        <argument
+            android:name="journal"
+            app:argType="com.example.journaltodoapp.data.Journal" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.journaltodoapp.MainActivity"
+        android:label="MainActivity" />
+</navigation>
